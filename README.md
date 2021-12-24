@@ -7,3 +7,7 @@
 ```
 g++ .\decompiled.cpp .\main.cpp -o keygen
 ```
+
+## 许可证
+
+**GPL-3.0 License**
