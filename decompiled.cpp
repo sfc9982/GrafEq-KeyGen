@@ -193,7 +193,8 @@ int ACFXLookup(int a1)
 char ACFCharToUpper(char a1)
 {
 	if (ACFCharIsLower(a1))
-		a1 -= 32;
+		// a1 -= 32;
+		a1 &= '_'; //Some bitwise optimazation tricks
 	return a1;
 }
 
