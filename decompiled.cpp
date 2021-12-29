@@ -1,4 +1,4 @@
-#include "decompiled.h"
+#include "decompiled.hpp"
 
 #include <cctype>
 #include <cstring>

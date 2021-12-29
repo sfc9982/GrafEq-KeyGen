@@ -1,4 +1,4 @@
-#include "decompiled.h"
+#include "decompiled.hpp"
 
 #include <algorithm>
 #include <iostream>
