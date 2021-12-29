@@ -11,11 +11,14 @@ void ACFXGetSecertByName(const char *name, _BYTE *secert)
 {
 	int nameLen = strlen(name);
 	_BYTE vResult[5];
-	vResult[0] = secert[0] = 0; // rand();
-	vResult[1] = secert[1] = 0; // rand();
-	vResult[2] = secert[4] = 0; // rand();
-	vResult[3] = secert[6] = 0; // rand();
-	vResult[4] = secert[7] = 0; // rand();
+	// vResult[0] = secert[0] = 0; // rand();
+	// vResult[1] = secert[1] = 0; // rand();
+	// vResult[2] = secert[4] = 0; // rand();
+	// vResult[3] = secert[6] = 0; // rand();
+	// vResult[4] = secert[7] = 0; // rand();
+	memset(vResult, 0, sizeof(vResult));
+	memset(secert, 0, sizeof(vResult));
+
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -26,6 +29,8 @@ void ACFXGetSecertByName(const char *name, _BYTE *secert)
 		}
 		secert[ACDXSecretCode2[i]] = v16;
 	}
+
+	return;
 }
 
 void ACFXGetCodeBySecert(const _BYTE *secert, char *code)
@@ -46,14 +51,17 @@ void ACFXGetCodeBySecert(const _BYTE *secert, char *code)
 	{
 		code[i] = ACDXSecertCode0[xcode[i]];
 	}
+
+	return;
 }
 
 int main()
 {
 	int mode;
 
-	cout << "Enter mode(0=gen, otherwise=test):" << endl;
+	cout << "Enter mode(0=gen, otherwise=debug):" << endl;
 	cin >> mode;
+	
 	if (mode)
 	{
 		string name, code;
@@ -71,7 +79,7 @@ int main()
 		string name;
 		while (cin >> name)
 		{
-			for (size_t i = 0; i < name.size(); i++)
+			for (size_t i = 0; i < name.length(); i++)
 				name[i] = toupper(name[i]);
 
 			_BYTE secert[10];
@@ -82,6 +90,8 @@ int main()
 			cout << code << endl;
 		}
 	}
+
 	getchar();
+
 	return 0;
 }
